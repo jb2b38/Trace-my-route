@@ -14,6 +14,7 @@
 		D1EBA62C1F72CD1A00E43BA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1EBA62A1F72CD1A00E43BA5 /* LaunchScreen.storyboard */; };
 		D1EBA6371F72CD1A00E43BA5 /* Trace_my_routeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EBA6361F72CD1A00E43BA5 /* Trace_my_routeTests.swift */; };
 		D1EBA6421F72CD1A00E43BA5 /* Trace_my_routeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EBA6411F72CD1A00E43BA5 /* Trace_my_routeUITests.swift */; };
+		D1EBA6511F72EDDB00E43BA5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EBA6501F72EDDB00E43BA5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D1EBA63D1F72CD1A00E43BA5 /* Trace my routeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trace my routeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1EBA6411F72CD1A00E43BA5 /* Trace_my_routeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trace_my_routeUITests.swift; sourceTree = "<group>"; };
 		D1EBA6431F72CD1A00E43BA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1EBA6501F72EDDB00E43BA5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1EBA6511F72EDDB00E43BA5 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 				D1EBA6351F72CD1A00E43BA5 /* Trace my routeTests */,
 				D1EBA6401F72CD1A00E43BA5 /* Trace my routeUITests */,
 				D1EBA61F1F72CD1A00E43BA5 /* Products */,
+				D1EBA64F1F72EDDB00E43BA5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +127,14 @@
 				D1EBA6431F72CD1A00E43BA5 /* Info.plist */,
 			);
 			path = "Trace my routeUITests";
+			sourceTree = "<group>";
+		};
+		D1EBA64F1F72EDDB00E43BA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1EBA6501F72EDDB00E43BA5 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +206,14 @@
 					D1EBA61D1F72CD1A00E43BA5 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D1EBA6311F72CD1A00E43BA5 = {
 						CreatedOnToolsVersion = 9.0;
@@ -426,14 +446,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B39N84CHMB;
 				INFOPLIST_FILE = "Trace my route/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deberlhe.jean-baptiste.Trace-my-route";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -441,14 +463,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B39N84CHMB;
 				INFOPLIST_FILE = "Trace my route/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deberlhe.jean-baptiste.Trace-my-route";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

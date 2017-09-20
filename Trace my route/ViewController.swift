@@ -7,19 +7,72 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
+	@IBOutlet var map: MKMapView!
+	let locationManager = CLLocationManager()
+	var recording : Bool = false
+	@IBAction func recordButtonPressed(_ sender: UIBarButtonItem) {
+		if sender.title! == "record" {
+			recording = true
+		} else {
+			recording = false
+		}
+		
+		switch recording {
+		case true:
+			locationManager.requestAlwaysAuthorization()
+			map.showsUserLocation = true
+			sender.title = "stop"
+		default:
+			map.showsUserLocation = false
+			sender.title = "record"
+		}
+		
+		
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		
+		locationManager.delegate = self
+		
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+		
 	}
-
-
+	
+	func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
+		
+	}
+	
+	func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
+		
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		NSLog("Location error : \(error)")
+	}
+	
+	func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
+		return false
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+		
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+		NSLog("New authorisation status : \(status)")
+	}
+	
 }
 

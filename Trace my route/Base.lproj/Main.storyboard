@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +12,46 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Trace_my_route" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z84-4H-Bgm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VS-pI-Xyc">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1gy-oV-KgF"/>
+                                    <barButtonItem title="record" id="WIb-e5-LgA">
+                                        <connections>
+                                            <action selector="recordButtonPressed:" destination="BYZ-38-t0r" id="aYo-5G-pTe"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uu9-Sg-YJX"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="trailing" secondItem="6VS-pI-Xyc" secondAttribute="trailing" id="G3a-a5-hEb"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="6VS-pI-Xyc" secondAttribute="leading" id="Je2-aC-Ky9"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Lhf-YT-Opg"/>
+                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="top" secondItem="z84-4H-Bgm" secondAttribute="bottom" id="YzW-wp-YFJ"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d10-mY-kgW"/>
+                            <constraint firstAttribute="trailing" secondItem="z84-4H-Bgm" secondAttribute="trailing" id="f1v-K7-gVa"/>
+                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jpD-2w-b8x"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="z84-4H-Bgm" id="wGB-IL-Gkz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="116" y="118.29085457271366"/>
         </scene>
     </scenes>
 </document>
