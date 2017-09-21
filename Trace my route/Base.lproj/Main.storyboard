@@ -19,6 +19,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z84-4H-Bgm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="tintColor" red="0.2114503831" green="0.00076656904999999995" blue="0.98823529480000005" alpha="1" colorSpace="calibratedRGB"/>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VS-pI-Xyc">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -30,22 +31,29 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Uu9-Sg-YJX"/>
+                                    <barButtonItem title="clear" id="YsL-he-fTe">
+                                        <connections>
+                                            <action selector="clearButtonPressed:" destination="BYZ-38-t0r" id="VFD-9e-gVV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JYA-xe-vcO"/>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="trailing" secondItem="6VS-pI-Xyc" secondAttribute="trailing" id="G3a-a5-hEb"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="6VS-pI-Xyc" secondAttribute="leading" id="Je2-aC-Ky9"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Lhf-YT-Opg"/>
-                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="top" secondItem="z84-4H-Bgm" secondAttribute="bottom" id="YzW-wp-YFJ"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d10-mY-kgW"/>
-                            <constraint firstAttribute="trailing" secondItem="z84-4H-Bgm" secondAttribute="trailing" id="f1v-K7-gVa"/>
-                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jpD-2w-b8x"/>
+                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="top" secondItem="z84-4H-Bgm" secondAttribute="bottom" id="5nn-Bn-ao7"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="trailing" secondItem="6VS-pI-Xyc" secondAttribute="trailing" id="6of-5y-PKJ"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FeX-dC-hUM"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Iol-3d-bLd"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="6VS-pI-Xyc" secondAttribute="leading" id="PAK-ZC-Vff"/>
+                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gXk-P4-TQi"/>
+                            <constraint firstAttribute="trailing" secondItem="z84-4H-Bgm" secondAttribute="trailing" id="mi7-Eq-doG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="clearButton" destination="YsL-he-fTe" id="MXD-zS-hgW"/>
                         <outlet property="map" destination="z84-4H-Bgm" id="wGB-IL-Gkz"/>
                     </connections>
                 </viewController>

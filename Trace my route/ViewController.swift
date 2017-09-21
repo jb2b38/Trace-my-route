@@ -9,11 +9,25 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
 	@IBOutlet var map: MKMapView!
+	@IBOutlet var clearButton: UIBarButtonItem!
+	
 	let locationManager = CLLocationManager()
 	var recording : Bool = false
+	var userCoordinates : Array<CLLocationCoordinate2D> = []
+	var polylines : Array<MKPolyline> = []
+	var isFirstLocation : Bool = true
+	
+	@IBAction func clearButtonPressed(_ sender: UIBarButtonItem) {
+		userCoordinates.removeAll(keepingCapacity: false)
+		for polyline in polylines {
+			map.remove(polyline)
+		}
+		polylines.removeAll(keepingCapacity: false)
+	}
+	
 	@IBAction func recordButtonPressed(_ sender: UIBarButtonItem) {
 		if sender.title! == "record" {
 			recording = true
@@ -25,9 +39,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		case true:
 			locationManager.requestAlwaysAuthorization()
 			map.showsUserLocation = true
+			isFirstLocation = true
+			locationManager.startUpdatingHeading()
+			locationManager.startUpdatingLocation()
 			sender.title = "stop"
+			
 		default:
 			map.showsUserLocation = false
+			isFirstLocation = false
+			locationManager.stopUpdatingHeading()
+			locationManager.stopUpdatingLocation()
 			sender.title = "record"
 		}
 		
@@ -38,12 +59,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		super.viewDidLoad()
 		
 		locationManager.delegate = self
+		map.delegate = self
 		
+		let userTrace = MKPolyline(coordinates: userCoordinates, count: userCoordinates.count)
+		
+		setUserPolyline(polyline: userTrace)
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		
+	}
+	
+	func setUserPolyline(polyline: MKPolyline) {
+		polylines.append(polyline)
+		map.add(polyline)
+		
+		if (polylines.count > 1) {
+			map.remove(polylines.first!)
+			_ = polylines.dropFirst()
+		}
 	}
 	
 	func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
@@ -68,11 +103,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		
+		if isFirstLocation {
+			let region = MKCoordinateRegion(center: locations.last!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+			map.setRegion(region , animated: true)
+			isFirstLocation = false
+		}
+		
+		for location in locations {
+			userCoordinates.append(location.coordinate)
+		}
+		
+		let userTrace = MKPolyline(coordinates: userCoordinates, count: userCoordinates.count)
+		setUserPolyline(polyline: userTrace)
+		
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		NSLog("New authorisation status : \(status)")
 	}
+	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+		
+		if overlay is MKPolyline {
+			let renderer = MKPolylineRenderer(overlay: overlay)
+			renderer.strokeColor = .red
+			renderer.lineWidth = 6
+			return renderer
+		}
+		return MKOverlayRenderer()
+	}
+	
 	
 }
 
