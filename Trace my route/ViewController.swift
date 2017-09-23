@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import ASPolylineView
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -60,10 +61,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 		
 		locationManager.delegate = self
 		map.delegate = self
-		
-		let userTrace = MKPolyline(coordinates: userCoordinates, count: userCoordinates.count)
-		
-		setUserPolyline(polyline: userTrace)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -124,9 +121,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		
 		if overlay is MKPolyline {
-			let renderer = MKPolylineRenderer(overlay: overlay)
+			let renderer = ASPolylineRenderer(polyline: overlay as! MKPolyline)
 			renderer.strokeColor = .red
-			renderer.lineWidth = 6
+			renderer.lineWidth = 12
+			renderer.lineJoin = .round
+			renderer.lineCap = .round
+			renderer.borderColor = .white
 			return renderer
 		}
 		return MKOverlayRenderer()

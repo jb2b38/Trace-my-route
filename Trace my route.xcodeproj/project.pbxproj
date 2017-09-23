@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1CE43951F76E17000181910 /* ASPolylineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CE43941F76E17000181910 /* ASPolylineView.framework */; };
 		D1EBA6221F72CD1A00E43BA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EBA6211F72CD1A00E43BA5 /* AppDelegate.swift */; };
 		D1EBA6241F72CD1A00E43BA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EBA6231F72CD1A00E43BA5 /* ViewController.swift */; };
 		D1EBA6271F72CD1A00E43BA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1EBA6251F72CD1A00E43BA5 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D1CE43941F76E17000181910 /* ASPolylineView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ASPolylineView.framework; path = Carthage/Build/iOS/ASPolylineView.framework; sourceTree = "<group>"; };
 		D1EBA61E1F72CD1A00E43BA5 /* Trace my route.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trace my route.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1EBA6211F72CD1A00E43BA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1EBA6231F72CD1A00E43BA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1EBA6511F72EDDB00E43BA5 /* MapKit.framework in Frameworks */,
+				D1CE43951F76E17000181910 /* ASPolylineView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +135,7 @@
 		D1EBA64F1F72EDDB00E43BA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1CE43941F76E17000181910 /* ASPolylineView.framework */,
 				D1EBA6501F72EDDB00E43BA5 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -147,6 +151,7 @@
 				D1EBA61A1F72CD1A00E43BA5 /* Sources */,
 				D1EBA61B1F72CD1A00E43BA5 /* Frameworks */,
 				D1EBA61C1F72CD1A00E43BA5 /* Resources */,
+				D12529A01F757B140081E530 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -273,6 +278,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D12529A01F757B140081E530 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ASPolylineView.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ASPolylineView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D1EBA61A1F72CD1A00E43BA5 /* Sources */ = {
@@ -449,6 +472,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B39N84CHMB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Trace my route/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -466,6 +493,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B39N84CHMB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Trace my route/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

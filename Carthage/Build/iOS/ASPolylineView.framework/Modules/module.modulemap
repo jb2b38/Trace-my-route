@@ -1,0 +1,6 @@
+framework module ASPolylineView {
+  umbrella header "ASPolylineView.h"
+
+  export *
+  module * { export * }
+}

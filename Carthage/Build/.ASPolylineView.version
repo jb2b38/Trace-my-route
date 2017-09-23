@@ -1,0 +1,21 @@
+{
+  "iOS" : [
+    {
+      "hash" : "5c11ad71f2c013adb9a66cd5daca915bc236314ba75ee9242d724227d65552c2",
+      "name" : "ASPolylineView"
+    }
+  ],
+  "commitish" : "v1.0.2",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+    {
+      "hash" : "b6d43bc296a99a7b4e18c6525768b78e05fd8d3e654090c13848eef40068bbdf",
+      "name" : "ASPolylineView"
+    }
+  ]
+}

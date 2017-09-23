@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z84-4H-Bgm">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z84-4H-Bgm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="tintColor" red="0.2114503831" green="0.00076656904999999995" blue="0.98823529480000005" alpha="1" colorSpace="calibratedRGB"/>
                             </mapView>
