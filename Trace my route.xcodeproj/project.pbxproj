@@ -16,6 +16,7 @@
 		D1EBA6371F72CD1A00E43BA5 /* Trace_my_routeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EBA6361F72CD1A00E43BA5 /* Trace_my_routeTests.swift */; };
 		D1EBA6421F72CD1A00E43BA5 /* Trace_my_routeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EBA6411F72CD1A00E43BA5 /* Trace_my_routeUITests.swift */; };
 		D1EBA6511F72EDDB00E43BA5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EBA6501F72EDDB00E43BA5 /* MapKit.framework */; };
+		D1FFB5B61F77B2AF003A4219 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FFB5B51F77B25C003A4219 /* GoogleMobileAds.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D1EBA6411F72CD1A00E43BA5 /* Trace_my_routeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trace_my_routeUITests.swift; sourceTree = "<group>"; };
 		D1EBA6431F72CD1A00E43BA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1EBA6501F72EDDB00E43BA5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D1FFB5B51F77B25C003A4219 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			files = (
 				D1EBA6511F72EDDB00E43BA5 /* MapKit.framework in Frameworks */,
 				D1CE43951F76E17000181910 /* ASPolylineView.framework in Frameworks */,
+				D1FFB5B61F77B2AF003A4219 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +138,7 @@
 		D1EBA64F1F72EDDB00E43BA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1FFB5B51F77B25C003A4219 /* GoogleMobileAds.framework */,
 				D1CE43941F76E17000181910 /* ASPolylineView.framework */,
 				D1EBA6501F72EDDB00E43BA5 /* MapKit.framework */,
 			);
@@ -475,6 +479,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Trace my route/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -496,6 +501,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Trace my route/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

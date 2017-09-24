@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z84-4H-Bgm">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z84-4H-Bgm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="tintColor" red="0.2114503831" green="0.00076656904999999995" blue="0.98823529480000005" alpha="1" colorSpace="calibratedRGB"/>
                             </mapView>
@@ -42,19 +42,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="top" secondItem="z84-4H-Bgm" secondAttribute="bottom" id="5nn-Bn-ao7"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="trailing" secondItem="6VS-pI-Xyc" secondAttribute="trailing" id="6of-5y-PKJ"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FeX-dC-hUM"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Iol-3d-bLd"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="6VS-pI-Xyc" secondAttribute="leading" id="PAK-ZC-Vff"/>
-                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gXk-P4-TQi"/>
-                            <constraint firstAttribute="trailing" secondItem="z84-4H-Bgm" secondAttribute="trailing" id="mi7-Eq-doG"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="trailing" secondItem="6VS-pI-Xyc" secondAttribute="trailing" id="4FG-Ih-WS5"/>
+                            <constraint firstAttribute="trailing" secondItem="z84-4H-Bgm" secondAttribute="trailing" id="Cwe-uz-GiH"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EtX-uY-81d"/>
+                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="top" secondItem="z84-4H-Bgm" secondAttribute="bottom" id="FVO-V7-BGc"/>
+                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Msh-r6-Qfc"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="6VS-pI-Xyc" secondAttribute="leading" id="m1p-OS-s8b"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wbs-BB-JfC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="clearButton" destination="YsL-he-fTe" id="MXD-zS-hgW"/>
                         <outlet property="map" destination="z84-4H-Bgm" id="wGB-IL-Gkz"/>
+                        <outlet property="toolbar" destination="6VS-pI-Xyc" id="6Ft-lM-e17"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
