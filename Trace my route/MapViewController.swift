@@ -13,9 +13,7 @@ import GoogleMobileAds
 
 class MapViewController:
 	UIViewController,
-	CLLocationManagerDelegate,
-	MKMapViewDelegate,
-	GADBannerViewDelegate {
+	MKMapViewDelegate {
 
 	@IBOutlet var map: MKMapView!
 	@IBOutlet var clearButton: UIBarButtonItem!
@@ -38,28 +36,22 @@ class MapViewController:
 	}
 	
 	@IBAction func recordButtonPressed(_ sender: UIBarButtonItem) {
-		if sender.title! == "record" {
-			recording = true
-		} else {
-			recording = false
-		}
 		
-		switch recording {
-		case true:
+		recording = (sender.title! == "record")
+		
+		if recording {
 			locationManager.requestAlwaysAuthorization()
-			map.showsUserLocation = true
-			isFirstLocation = true
 			locationManager.startUpdatingHeading()
 			locationManager.startUpdatingLocation()
 			sender.title = "stop"
-			
-		default:
-			map.showsUserLocation = false
-			isFirstLocation = false
+		} else {
 			locationManager.stopUpdatingHeading()
 			locationManager.stopUpdatingLocation()
 			sender.title = "record"
 		}
+		
+		map.showsUserLocation = recording
+		isFirstLocation = recording
 	}
 	
 	override func viewDidLoad() {
@@ -86,6 +78,23 @@ class MapViewController:
 		}
 	}
 	
+	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+		
+		if overlay is MKPolyline {
+			let renderer = ASPolylineRenderer(polyline: overlay as! MKPolyline)
+			renderer.strokeColor = .red
+			renderer.lineWidth = 12
+			renderer.lineJoin = .round
+			renderer.lineCap = .round
+			renderer.borderColor = .white
+			return renderer
+		}
+		return MKOverlayRenderer()
+	}
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+	
 	func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
 		
 	}
@@ -100,10 +109,6 @@ class MapViewController:
 	
 	func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
 		return false
-	}
-	
-	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-		
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -125,19 +130,9 @@ class MapViewController:
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		NSLog("New authorisation status : \(status)")
 	}
-	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-		
-		if overlay is MKPolyline {
-			let renderer = ASPolylineRenderer(polyline: overlay as! MKPolyline)
-			renderer.strokeColor = .red
-			renderer.lineWidth = 12
-			renderer.lineJoin = .round
-			renderer.lineCap = .round
-			renderer.borderColor = .white
-			return renderer
-		}
-		return MKOverlayRenderer()
-	}
+}
+
+extension MapViewController: GADBannerViewDelegate {
 	
 	func createGoogleAdBannerView() {
 		adView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
