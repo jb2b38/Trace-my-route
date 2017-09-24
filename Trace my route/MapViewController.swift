@@ -11,7 +11,7 @@ import MapKit
 import ASPolylineView
 import GoogleMobileAds
 
-class ViewController:
+class MapViewController:
 	UIViewController,
 	CLLocationManagerDelegate,
 	MKMapViewDelegate,
