@@ -40,7 +40,7 @@ class MapViewController:
 		recording = (sender.title! == "record")
 		
 		if recording {
-			locationManager.requestAlwaysAuthorization()
+			locationManager.requestWhenInUseAuthorization()
 			locationManager.startUpdatingHeading()
 			locationManager.startUpdatingLocation()
 			sender.title = "stop"
