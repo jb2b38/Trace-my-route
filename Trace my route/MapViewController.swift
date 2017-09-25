@@ -34,6 +34,7 @@ class MapViewController:
 			map.remove(polyline)
 		}
 		polylines.removeAll(keepingCapacity: false)
+		updateDistanceLabel()
 	}
 	
 	@IBAction func recordButtonPressed(_ sender: UIBarButtonItem) {
@@ -75,13 +76,22 @@ class MapViewController:
 	func setUserPolyline(polyline: MKPolyline) {
 		polylines.append(polyline)
 		map.add(polyline)
-		if (polyline.pointCount > 1) {
-			NSLog("Distance: %.2f km", polyline.distance()/1000)
-		}
 		
 		if (polylines.count > 1) {
 			map.remove(polylines.first!)
-			_ = polylines.dropFirst()
+			polylines.removeFirst()
+		}
+	}
+	
+	func updateDistanceLabel() {
+		
+		guard let polyline = polylines.first else {
+			distanceLabel.text = "0 km"
+			return
+		}
+		
+		if (polyline.pointCount > 1) {
+			distanceLabel.text = String.localizedStringWithFormat("%.2f km", polyline.distance()/1000)
 		}
 	}
 	
@@ -102,18 +112,6 @@ class MapViewController:
 
 extension MapViewController: CLLocationManagerDelegate {
 	
-	func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-		
-	}
-	
-	func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
-		
-	}
-	
-	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-		NSLog("Location error : \(error)")
-	}
-	
 	func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
 		return false
 	}
@@ -132,6 +130,7 @@ extension MapViewController: CLLocationManagerDelegate {
 		
 		let userTrace = MKPolyline(coordinates: userCoordinates, count: userCoordinates.count)
 		setUserPolyline(polyline: userTrace)
+		updateDistanceLabel()
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -148,31 +147,21 @@ extension MapViewController: GADBannerViewDelegate {
 		adView.translatesAutoresizingMaskIntoConstraints = false
 		adView.delegate = self
 		
-		// mGoogleBannerView must be added as a subview before it can be used when creating
-		// constraints.
+		// mGoogleBannerView must be added as a subview before it can be used when creating constraints.
 		view.addSubview(adView)
-		
-		// Get rid of all existing constraints that were defined in the storyboard.
-		// Alternatively, you could create the banner view and all of these constraints
-		// in the storyboard.
-		view.removeConstraints(view.constraints)
 		
 		let bannerHeight = adView.sizeThatFits(.zero).height
 		
 		//Every view fill their container (self.view) horizontally.
-		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[map]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["map": map]))
-		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[toolbar]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["toolbar": toolbar]))
 		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[adView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["adView" : adView]))
 		
-		// Stack the map view atop the banner view and pin the top of the map view
-		// to the container top.  The result here is that moving the banner view will
+		// Stack the map view atop the banner view. The result here is that moving the banner view will
 		// resize the map view and the banner view will never overlap the map view.
-		mGoogleAdsConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|[map][adView(==bannerHeight)]",
+		mGoogleAdsConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:[map][adView(==bannerHeight)]",
 		                                                      options: NSLayoutFormatOptions(rawValue: 0),
 		                                                      metrics: ["bannerHeight": bannerHeight],
 		                                                      views: ["map": map, "adView": adView])
 		view.addConstraints(mGoogleAdsConstraint as! [NSLayoutConstraint])
-		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[toolbar]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["toolbar" : toolbar]))
 		
 		// Finally, place the banner view (bannerHeight) points below the toolbar (ofscreen).
 		// Because of the constraint above, the map view will now fill the container but we
