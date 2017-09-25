@@ -18,6 +18,7 @@ class MapViewController:
 	@IBOutlet var map: MKMapView!
 	@IBOutlet var clearButton: UIBarButtonItem!
 	@IBOutlet weak var toolbar: UIToolbar!
+	@IBOutlet weak var distanceLabel: UILabel!
 	var adView: GADBannerView!
 	var mGoogleAdsConstraint: [AnyObject] = [AnyObject]()
 	
@@ -60,6 +61,9 @@ class MapViewController:
 		createGoogleAdBannerView()
 		
 		locationManager.delegate = self
+		locationManager.distanceFilter = 10
+		locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+		
 		map.delegate = self
 	}
 
@@ -71,6 +75,9 @@ class MapViewController:
 	func setUserPolyline(polyline: MKPolyline) {
 		polylines.append(polyline)
 		map.add(polyline)
+		if (polyline.pointCount > 1) {
+			NSLog("Distance: %.2f km", polyline.distance()/1000)
+		}
 		
 		if (polylines.count > 1) {
 			map.remove(polylines.first!)
@@ -221,5 +228,33 @@ extension MapViewController: GADBannerViewDelegate {
 	
 	func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
 		adjustBannerView(adLoaded: false)
+	}
+}
+
+extension MKPolyline {
+	var coordinates: [CLLocationCoordinate2D] {
+		var coords = [CLLocationCoordinate2D](repeating: kCLLocationCoordinate2DInvalid,
+		                                      count: self.pointCount)
+		
+		self.getCoordinates(&coords, range: NSRange(location: 0, length: self.pointCount))
+		
+		return coords
+	}
+	
+	func distance() -> Double {
+		var totalDistance: Double = 0
+		
+		for (index, element) in coordinates.enumerated() {
+			if (index == (pointCount - 1)) {
+				break
+			}
+			let currentPoint = CLLocation(latitude: element.latitude, longitude: element.longitude)
+			let nextPoint = CLLocation(latitude: coordinates[index+1].latitude, longitude: coordinates[index+1].longitude)
+			
+			let currentDistance = currentPoint.distance(from: nextPoint)
+			totalDistance += currentDistance
+		}
+		
+		return totalDistance
 	}
 }
