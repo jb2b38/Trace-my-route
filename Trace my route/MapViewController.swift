@@ -17,6 +17,11 @@ class MapViewController:
 
 	@IBOutlet var map: MKMapView!
 	@IBOutlet var clearButton: UIBarButtonItem!
+	@IBOutlet weak var trackingButton: MKUserTrackingBarButtonItem! {
+		didSet {
+			trackingButton.mapView = self.map;
+		}
+	}
 	@IBOutlet weak var toolbar: UIToolbar!
 	@IBOutlet weak var distanceLabel: UILabel!
 	var adView: GADBannerView!
@@ -26,7 +31,6 @@ class MapViewController:
 	var recording : Bool = false
 	var userCoordinates : Array<CLLocationCoordinate2D> = []
 	var polylines : Array<MKPolyline> = []
-	var isFirstLocation : Bool = true
 	
 	@IBAction func clearButtonPressed(_ sender: UIBarButtonItem) {
 		userCoordinates.removeAll(keepingCapacity: false)
@@ -42,7 +46,6 @@ class MapViewController:
 		recording = (sender.title! == "record")
 		
 		if recording {
-			locationManager.requestWhenInUseAuthorization()
 			locationManager.startUpdatingHeading()
 			locationManager.startUpdatingLocation()
 			sender.title = "stop"
@@ -53,13 +56,14 @@ class MapViewController:
 		}
 		
 		map.showsUserLocation = recording
-		isFirstLocation = recording
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		createGoogleAdBannerView()
+		
+		locationManager.requestWhenInUseAuthorization()
 		
 		locationManager.delegate = self
 		locationManager.distanceFilter = 10
@@ -117,12 +121,6 @@ extension MapViewController: CLLocationManagerDelegate {
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		
-		if isFirstLocation {
-			let region = MKCoordinateRegion(center: locations.last!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-			map.setRegion(region , animated: true)
-			isFirstLocation = false
-		}
 		
 		for location in locations {
 			userCoordinates.append(location.coordinate)

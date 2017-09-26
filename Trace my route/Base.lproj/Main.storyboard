@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z84-4H-Bgm">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z84-4H-Bgm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="tintColor" red="0.2114503831" green="0.00076656904999999995" blue="0.98823529480000005" alpha="1" colorSpace="calibratedRGB"/>
                             </mapView>
@@ -25,24 +25,26 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1gy-oV-KgF"/>
+                                    <barButtonItem title="position" id="agz-5C-Ktn" customClass="MKUserTrackingBarButtonItem"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uu9-Sg-YJX"/>
                                     <barButtonItem title="record" id="WIb-e5-LgA">
                                         <connections>
                                             <action selector="recordButtonPressed:" destination="BYZ-38-t0r" id="aYo-5G-pTe"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uu9-Sg-YJX"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JYA-xe-vcO"/>
                                     <barButtonItem title="clear" id="YsL-he-fTe">
                                         <connections>
                                             <action selector="clearButtonPressed:" destination="BYZ-38-t0r" id="VFD-9e-gVV"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JYA-xe-vcO"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mg5-Ey-e1J"/>
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUg-ZV-WFd">
                                 <rect key="frame" x="150" y="30" width="75" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="83D-D1-3iE"/>
+                                    <constraint firstAttribute="height" constant="25" id="8QV-MT-q2u"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -51,7 +53,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJp-cn-cDm">
-                                <rect key="frame" x="167.5" y="63" width="40" height="21"/>
+                                <rect key="frame" x="168" y="63" width="40" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -59,17 +61,17 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aJp-cn-cDm" firstAttribute="top" secondItem="wUg-ZV-WFd" secondAttribute="bottom" constant="8" id="4DB-Qe-c32"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="6VS-pI-Xyc" secondAttribute="leading" id="FRC-w8-AxA"/>
-                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="top" secondItem="z84-4H-Bgm" secondAttribute="bottom" id="L2v-6w-jpx"/>
-                            <constraint firstItem="aJp-cn-cDm" firstAttribute="centerX" secondItem="z84-4H-Bgm" secondAttribute="centerX" id="P43-bE-W8h"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XYh-8q-5T3"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="trailing" secondItem="6VS-pI-Xyc" secondAttribute="trailing" id="aDF-1q-FLg"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="centerX" secondItem="wUg-ZV-WFd" secondAttribute="centerX" id="eEa-5n-Bcg"/>
-                            <constraint firstItem="wUg-ZV-WFd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="kma-7P-qNd"/>
-                            <constraint firstItem="z84-4H-Bgm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lOy-cW-pV1"/>
-                            <constraint firstAttribute="trailing" secondItem="z84-4H-Bgm" secondAttribute="trailing" id="qfS-Ua-Smg"/>
-                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="taw-yg-9tM"/>
+                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="top" secondItem="z84-4H-Bgm" secondAttribute="bottom" id="1SR-j5-SnT"/>
+                            <constraint firstAttribute="trailing" secondItem="z84-4H-Bgm" secondAttribute="trailing" id="CXX-Ux-Io2"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="trailing" secondItem="6VS-pI-Xyc" secondAttribute="trailing" id="Cwr-Zv-2lL"/>
+                            <constraint firstItem="aJp-cn-cDm" firstAttribute="centerX" secondItem="6VS-pI-Xyc" secondAttribute="centerX" id="Gfh-6M-HFs"/>
+                            <constraint firstItem="6VS-pI-Xyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="JWq-Fg-4TE"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="6VS-pI-Xyc" secondAttribute="leading" id="JX5-GC-Kic"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KtH-jY-tmy"/>
+                            <constraint firstItem="aJp-cn-cDm" firstAttribute="top" secondItem="wUg-ZV-WFd" secondAttribute="bottom" constant="8" symbolic="YES" id="j7N-JW-Hvi"/>
+                            <constraint firstItem="wUg-ZV-WFd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="jQl-ed-Bbt"/>
+                            <constraint firstItem="z84-4H-Bgm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qzn-Kl-UIG"/>
+                            <constraint firstItem="wUg-ZV-WFd" firstAttribute="centerX" secondItem="aJp-cn-cDm" secondAttribute="centerX" id="vwc-Ju-mJw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -78,6 +80,7 @@
                         <outlet property="distanceLabel" destination="aJp-cn-cDm" id="VdA-hk-8It"/>
                         <outlet property="map" destination="z84-4H-Bgm" id="wGB-IL-Gkz"/>
                         <outlet property="toolbar" destination="6VS-pI-Xyc" id="6Ft-lM-e17"/>
+                        <outlet property="trackingButton" destination="agz-5C-Ktn" id="EWF-jT-qQ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

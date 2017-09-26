@@ -17,19 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t22-Dc-oR2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIn-yF-Ccb">
+                                <rect key="frame" x="150" y="30" width="75" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Vco-hO-dz9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.99992686509999995" green="1" blue="0.99987357850000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t22-Dc-oR2">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="t22-Dc-oR2" firstAttribute="bottom" secondItem="pmy-Or-fcH" secondAttribute="bottom" id="47r-pt-vHE"/>
+                            <constraint firstAttribute="trailing" secondItem="t22-Dc-oR2" secondAttribute="trailing" id="589-lR-HJc"/>
+                            <constraint firstItem="EIn-yF-Ccb" firstAttribute="centerX" secondItem="t22-Dc-oR2" secondAttribute="centerX" id="CYg-PS-LL9"/>
+                            <constraint firstItem="EIn-yF-Ccb" firstAttribute="top" secondItem="pmy-Or-fcH" secondAttribute="top" constant="10" id="NBl-dA-CsZ"/>
+                            <constraint firstItem="t22-Dc-oR2" firstAttribute="leading" secondItem="wRr-vw-MQY" secondAttribute="leading" id="YDi-Eo-lS8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pmy-Or-fcH"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
 </document>
